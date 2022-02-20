@@ -24,7 +24,7 @@ def parenthesis_term(term1, term2)
 end
 
 def addition(number_of_questions)
-    terms((1..99).to_a, ["+"], 5, 20)    
+    terms((1..99).to_a, ["+"], 5, number_of_questions)    
 end
 
 def substraction
@@ -42,7 +42,7 @@ end
 def add_sub
     substractions_to_add = (1..3).to_a.shuffle.first
     calc = substraction()
-    (1..substractions_to_add).each { |i| calc = calc + " " + substraction()}
+    (1..substractions_to_add).each { |i| calc = calc + " + " + substraction()}
     calc
 end
 
@@ -53,13 +53,13 @@ def add_sub_questions(number_of_questions)
 end
 
 def multiplication(number_of_questions)
-    terms((1..99).to_a, ["∙"], 3, 20)    
+    terms((1..99).to_a, ["∙"], 3, number_of_questions)    
 end
 
 def division_questions(number_of_questions)
     (1..number_of_questions).each do |i|
-        dividen_array_length = (2..5).to_a.shuffle.first
-        dividend = (1..99).to_a.shuffle.first(dividen_array_length)
+        dividen_array_length = (2..10).to_a.shuffle.first
+        dividend = (1..20).to_a.shuffle.first(dividen_array_length)
         divisor = dividend.first((1..dividen_array_length).to_a.shuffle.first)
         puts question_number(i) + division(dividend.reject(&:zero?).inject(:*).to_s,divisor.reject(&:zero?).inject(:*).to_s) + " = "
     end
